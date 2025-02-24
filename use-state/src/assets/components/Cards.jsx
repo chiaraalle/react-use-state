@@ -1,9 +1,10 @@
-function Cards(){
+function Cards({title, description}){
     return(
         <div className="card">
             <div className="card-title">
+                {title}
                 <div className="card-body">
-                    <p>testo</p>
+                    <p>{description}</p>
                 </div>
 
             </div>

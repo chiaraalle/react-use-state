@@ -32,6 +32,7 @@ const languages = [
   ];
 
   import Buttons from "./Buttons";
+  import Cards from './Cards'
   import { useState } from "react";
 
 function Main(){
@@ -44,11 +45,23 @@ function Main(){
             <Buttons key={language.id} title={language.title} isActive={active} onClick={() => setselectedLanguage(language)} /> /*all'interno di button passo come key l'evento onClick che va a richiamare la funzione setselectedlinguage con dentro come parametro il singolo oggetto che ho iterato con map */
         )
     })
+
+    const renderSelectedLanguage = () => {
+        if(!selectedLanguage) return <h2>Nessun linguaggio selezionato</h2>
+
+        const {title, description} = selectedLanguage
+        return(
+            <Cards title={title} description= {description} />
+        )
+    }
         
    
     return(
         <>
-        <h1>main</h1>
+        <div className="container">
+            <div>{selectLanguage()}</div>
+            <div>{renderSelectedLanguage()}</div>
+        </div>
         
         
         </>
