@@ -32,18 +32,24 @@ const languages = [
   ];
 
   import Buttons from "./Buttons";
+  import { useState } from "react";
 
 function Main(){
+    const [selectedLanguage, setselectedLanguage] = useState(null) /*selectedlanguage contiene il valore dello stato(inizialmente 0 o null) mentre setselectedlanguage è una funzione, che mi permetterà di cambiare il valore dinamicamente*/
+    const selectLanguage = () =>  languages.map((language) => { /*creo uno funzione anonima in cui inserisco il map per iterare tutto l'array */
+
+        const active = selectedLanguage === language
+
+        return (
+            <Buttons key={language.id} title={language.title} isActive={active} onClick={() => setselectedLanguage(language)} /> /*all'interno di button passo come key l'evento onClick che va a richiamare la funzione setselectedlinguage con dentro come parametro il singolo oggetto che ho iterato con map */
+        )
+    })
+        
+   
     return(
         <>
         <h1>main</h1>
-        {
-            languages.map((language) => {
-                return (
-                    <Buttons key={language.id} title={language.title} />
-                )
-            })
-        }
+        
         
         </>
         
