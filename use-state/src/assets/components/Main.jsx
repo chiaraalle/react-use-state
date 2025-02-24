@@ -37,18 +37,16 @@ function Main(){
     return(
         <>
         <h1>main</h1>
-        <Buttons />
+        {
+            languages.map((language) => {
+                return (
+                    <Buttons key={language.id} title={language.title} />
+                )
+            })
+        }
+        
         </>
         
-        /*<div className="languages-list">
-        {
-            faqs.map( (element) => {
-                return(
-                    < button key={element.id} faq={ element }/>
-                )
-            } )
-        }
-    </div>*/
     )
 }
 
